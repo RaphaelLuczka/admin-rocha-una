@@ -6,9 +6,12 @@ const cloudinary = require('cloudinary').v2;
 const path = require('path');
 const admin = require('firebase-admin');
 require('dotenv').config();
-
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+
 
 // Cloudinary config
 cloudinary.config({
