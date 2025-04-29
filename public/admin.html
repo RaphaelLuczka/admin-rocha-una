@@ -47,27 +47,29 @@
   </div>
 </body>
 
-  <script>
-    fetch('/banners.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.querySelector('.banners-container');
-        data.forEach(b => {
+<script>
+  fetch('/banners.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.querySelector('.banners-container');
+      container.innerHTML = ''; // limpa antes
+      Object.entries(data).forEach(([id, evento]) => {
         const div = document.createElement('div');
         div.innerHTML = `
-         <img src="${b.url}" class="admin-banner">
-         <h4>${b.titulo}</h4>
-         <p><strong>Data:</strong> ${b.data}</p>
-          <p>${b.descricao}</p>
-         <form action="/delete" method="POST">
-        <input type="hidden" name="url" value="${b.url}">
-    <button type="submit" class="btn-excluir">Excluir</button>
-  </form>
+          <img src="${evento.url}" class="admin-banner">
+          <h4>${evento.titulo}</h4>
+          <p><strong>Data:</strong> ${evento.data}</p>
+          <p>${evento.descricao}</p>
+          <form action="/delete" method="POST">
+            <input type="hidden" name="id" value="${id}">
+            <button type="submit" class="btn-excluir">Excluir</button>
+          </form>
         `;
         container.appendChild(div);
       });
     });
-</script>
+  </script>
+  
 
 <script>
 function logout() {
