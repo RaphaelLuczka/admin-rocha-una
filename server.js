@@ -18,7 +18,6 @@ cloudinary.config({
 });
 
 // Firebase Admin SDK
-const admin = require('firebase-admin');
 
 admin.initializeApp({
   credential: admin.credential.cert({
