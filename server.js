@@ -58,7 +58,7 @@ function checkAuth(req, res, next) {
 // Login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'admin' && password === 'admin') {
+  if (username === 'rochauna' && password === 'rochabarra@') {
     req.session.authenticated = true;
     res.redirect('/admin.html');
   } else {
